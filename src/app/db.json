@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "id": "100",
+      "name": "keyboard",
+      "price": 600
+    },
+    {
+      "id": "101",
+      "name": "mouse",
+      "price": 2200
+    },
+    {
+      "id": "102",
+      "name": "mobile",
+      "price": 95000
+    },
+    {
+      "id": "103",
+      "name": "laptop",
+      "price": 450000
+    },
+    {
+      "id": "104",
+      "name": "watch",
+      "price": 14000
+    }
+  ]
+}
