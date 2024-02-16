@@ -16,6 +16,7 @@ export class EmployeeComponent implements OnInit {
 
   employeeService:EmployeeService=inject(EmployeeService);
   employeeList:any=[];
+  departmentList:any=[];
   employeeForm!:FormGroup;
   isUpdatebtn!:boolean;
   queryValue:string|unknown;
@@ -24,12 +25,13 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployees();
+    this.getDepartments();
     this.employeeForm=this.fb.group({
       id:[],
       name:['',Validators.required],
       salary:[,Validators.required],
       email:[,Validators.required],
-      // department:[,Validators.required]
+      departmentid:[,Validators.required]
       
     });
     this.route.paramMap.subscribe(x=>{
@@ -55,14 +57,20 @@ export class EmployeeComponent implements OnInit {
   get email(){
     return this.employeeForm.get('email');
   }
-  // get department(){
-  //   return this.employeeForm.get('department');
-  // }
+  get departmentid(){
+    return this.employeeForm.get('departmentid');
+  }
 
   getEmployees(){
     this.employeeService.getEmployee().subscribe(result=>{
       this.employeeList=result;
       console.log(this.employeeList);
+    })
+  }
+  getDepartments(){
+    this.employeeService.getDepartment().subscribe(result=>{
+      this.departmentList=result;
+      console.log(this.departmentList);
     })
   }
   
@@ -91,7 +99,9 @@ export class EmployeeComponent implements OnInit {
       this.employeeForm.setValue({
         id:emp.id,
         name:emp.name,
-        price:emp.price
+        salary:emp.salary,
+        email:emp.email,
+        departmentid:emp.departmentid
       });
      
     }

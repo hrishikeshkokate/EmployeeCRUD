@@ -8,10 +8,15 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class EmployeeService{
   
   url:string="http://localhost:8080/employee/"
+  url2:string="http://localhost:8080/department/"
 constructor(private http:HttpClient) { }
 
 public getEmployee():Observable<any>{
   return this.http.get<any>(this.url+"getallemployees");
+  
+}
+public getDepartment():Observable<any>{
+  return this.http.get<any>(this.url2+"getalldepartments");
   
 }
 
